@@ -59,7 +59,7 @@ export default class Board extends Component {
 
 	/** handle changing a cell: update board & determine if winner */
 
-	flipCellsAroundMe = coord => {
+	flipCellsAround = coord => {
 		let { ncols, nrows } = this.props;
 		let board = this.state.board;
 		let [ y, x ] = coord.split('-').map(Number);
@@ -89,10 +89,10 @@ export default class Board extends Component {
 		// this.setState({ board, hasWon });
 	};
 
-	assignCell = cell => {
-		const id = key.generate();
-		return <Cell key={id} id={id} isLit={cell} />;
+	handleFlips = coord => {
+		this.flipCellsAround(coord);
 	};
+
 	/** Render game board or winning message. */
 
 	render() {
@@ -110,7 +110,7 @@ export default class Board extends Component {
 											key={`${idxY}-${idxX}`}
 											id={`${idxY}-${idxX}`}
 											isLit={cell}
-											flipCellsAroundMe={this.flipCellsAroundMe}
+											flipCellsAroundMe={this.handleFlips}
 										/>
 									))}
 								</tr>
