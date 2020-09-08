@@ -96,26 +96,37 @@ export default class Board extends Component {
 
 	render() {
 		return (
-			<div className="Board">
+			<div>
 				{this.state.hasWon ? (
-					<h1>You Won</h1>
+					<h1>
+						{' '}
+						<span className="neon-orange">You</span>{' '}
+						<span className="neon-blue">Won</span>{' '}
+					</h1>
 				) : (
-					<table className="Board">
-						<tbody>
-							{this.state.board.map((r, idxY) => (
-								<tr key={idxY}>
-									{r.map((cell, idxX) => (
-										<Cell
-											key={`${idxY}-${idxX}`}
-											id={`${idxY}-${idxX}`}
-											isLit={cell}
-											flipCellsAroundMe={this.handleFlips}
-										/>
-									))}
-								</tr>
-							))}
-						</tbody>
-					</table>
+					<div>
+						<div>
+							<span className="neon-orange">Lights</span>
+							<span className="neon-blue">Out</span>
+						</div>
+
+						<table className="Board">
+							<tbody>
+								{this.state.board.map((r, idxY) => (
+									<tr key={idxY}>
+										{r.map((cell, idxX) => (
+											<Cell
+												key={`${idxY}-${idxX}`}
+												id={`${idxY}-${idxX}`}
+												isLit={cell}
+												flipCellsAroundMe={this.handleFlips}
+											/>
+										))}
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
 				)}
 			</div>
 		);
