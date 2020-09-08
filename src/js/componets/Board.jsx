@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import key from 'react-key-string';
 import Cell from './Cell';
 import '../../css/Board.css';
 
@@ -50,7 +49,7 @@ export default class Board extends Component {
 		for (let i = 0; i < this.props.nrows; i++) {
 			let r = [];
 			for (let i = 0; i < this.props.ncols; i++) {
-				r.push(Math.round(Math.random() > this.props.chanceLightStartsOn));
+				r.push(Math.random() > this.props.chanceLightStartsOn);
 			}
 			board.push(r);
 		}
@@ -77,7 +76,7 @@ export default class Board extends Component {
 		flipCell(y, x + 1);
 		flipCell(y, x - 1);
 		this.setState({
-			board: board,
+			board,
 			hasWon: !board.some(row => row.includes(true))
 		});
 
